@@ -17,12 +17,9 @@ Vote_Percentage = []
 Total_Vote_Count = 0
 
 
-
-
-
 # Open and read csv file
 
-with open(Election_Data) as csvfile:
+with open(Election_Data, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ",")
 
     csv_header = next(csvreader)
