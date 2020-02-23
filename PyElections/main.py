@@ -1,9 +1,11 @@
+# Open and read csv file
+
 # Import needed functions to read csv file
 import os
 import csv
 
 # Path to csv file containing election data
-Election_Data = os.path.join("Resources", "Election_Data.csv")
+Election_Data = os.path.join("Election_Data.csv")
 
 # Create empty lists in which we will populate candidate names, their votes, and the percentage
 # of their votes from the total amount. 
@@ -52,19 +54,22 @@ with open(Election_Data, newline="") as csvfile:
         percentage = format(percentage, ".2%")
         Vote_Percentage.append(percentage)
 
-    # Capture the winning candidate with the highest vote count
+    # Capture the first and second advancing candidates with the highest vote count
 
-    Winning_Candidate = max(Vote_Count)
-    index = Vote_Count.index(Winning_Candidate)
-    Winning_Candidate = Candidates[index]
+    First_Advancing = max(Vote_Count)
+    index = Vote_Count.index(First_Advancing)
+    First_Advancing = Candidates[index]
+
+    Second_Advancing = Candidates[index + 1]
 
 # Printed election results
-print("Election Results")
+print("Houston Mayoral Election Results")
 print("-----------------------------")
-print("Total Votes: " + str(Total_Vote_Count))
+print(f"Total Cast Votes: {str(Total_Vote_Count)}")
 print("----------------------------")
 for i in range(len(Candidates)):
-    print(f"{Candidates[i]}: {str(Vote_Percentage[i])})")
+    print(f"{Candidates[i]}: {str(Vote_Percentage[i])} {str(Vote_Count[i])})")
 print("----------------------------")
-print(f"Winner: {Winning_Candidate}")
+print(f"1st Advancing Candidate: {First_Advancing}")
+print(f"2nd Advancing Candidate: {Second_Advancing}")
 print("----------------------------")
